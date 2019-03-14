@@ -192,6 +192,10 @@ class BaseData implements DisplayItem {
     private String actionType;
     private String actionData;
 
+    public BaseData() {
+
+    }
+
     public BaseData(int showType, String showData, String actionType, String actionData) {
         this.showType = showType;
         this.showData = showData;

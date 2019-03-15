@@ -28,9 +28,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void configRecyclerView() {
-        RecyclerView recyclerView = getView(R.id.list);
+        final RecyclerView recyclerView = getView(R.id.list);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        final LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+        recyclerView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (layoutManager != null) {
+                    int position = layoutManager.findFirstVisibleItemPosition();
+                }
+            }
+        });
         BaseAdapter adapter = new BaseAdapter();
         List<IDisplayItem> data = newTestData();
         adapter.setData(new AdapterHelperImpl(), data, mListener);
@@ -61,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
 
     private <T extends View> T getView(@IdRes int id) {
         return getWindow().findViewById(id);
+    }
+
+    private void log(String content) {
+        System.out.println("--->" + content);
     }
 }
 

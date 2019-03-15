@@ -13,22 +13,23 @@ public class HolderMap {
         String IMAGE = "image";
     }
 
-    private static final List<HolderModel> maps = new ArrayList<>();
-    private static int index;
-
-    private HolderMap() {
+    public static List<HolderModel> maps() {
+        return HOLDER.INSTANCE.maps;
     }
 
-    static {
+    private int index;
+    private final List<HolderModel> maps = new ArrayList<>();
+
+    private HolderMap() {
         maps.add(newModel(Types.TEXT, TextHolder.class));
         maps.add(newModel(Types.IMAGE, ImageHolder.class));
     }
 
-    private static HolderModel newModel(String showType, Class clazz) {
-        return new HolderModel(showType, index++, clazz);
+    private static final class HOLDER {
+        private static final HolderMap INSTANCE = new HolderMap();
     }
 
-    public static List<HolderModel> maps() {
-        return maps;
+    private HolderModel newModel(String showType, Class clazz) {
+        return new HolderModel(showType, index++, clazz);
     }
 }

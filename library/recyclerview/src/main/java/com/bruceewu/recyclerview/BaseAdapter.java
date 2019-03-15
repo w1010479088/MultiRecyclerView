@@ -42,7 +42,7 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseHolder<IDisplayItem>> 
 
     @Override
     public int getItemCount() {
-        return mData == null ? 0 : mData.size();
+        return mData.size();
     }
 
     @Override
@@ -51,7 +51,7 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseHolder<IDisplayItem>> 
     }
 
     private IDisplayItem getDisplayItem(int pos) {
-        return mData == null ? null : mData.get(pos);
+        return mData.get(pos);
     }
 
     private View getView(ViewGroup viewGroup, BaseHolder holder) {

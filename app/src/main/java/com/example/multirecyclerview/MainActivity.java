@@ -61,9 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
     private List<IDisplayItem> newTestData() {
         List<IDisplayItem> data = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 20; i++) {
             data.add(new BaseData(HolderMap.Types.TEXT, "大俊子" + i, null, null));
             data.add(new BaseData(HolderMap.Types.IMAGE, "大俊子" + i, null, null));
+            data.add(new BaseData(HolderMap.Types.IMAGE9, "大俊子" + i, null, null));
         }
         return data;
     }

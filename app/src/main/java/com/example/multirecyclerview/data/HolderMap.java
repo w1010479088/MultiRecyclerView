@@ -1,5 +1,6 @@
 package com.example.multirecyclerview.data;
 
+import com.example.multirecyclerview.holder.Image9Holder;
 import com.example.multirecyclerview.holder.ImageHolder;
 import com.example.multirecyclerview.holder.TextHolder;
 
@@ -11,6 +12,7 @@ public class HolderMap {
     public interface Types {
         String TEXT = "text";
         String IMAGE = "image";
+        String IMAGE9 = "image9";
     }
 
     public static List<HolderModel> maps() {
@@ -23,6 +25,7 @@ public class HolderMap {
     private HolderMap() {
         maps.add(newModel(Types.TEXT, TextHolder.class));
         maps.add(newModel(Types.IMAGE, ImageHolder.class));
+        maps.add(newModel(Types.IMAGE9, Image9Holder.class));
     }
 
     private static final class HOLDER {

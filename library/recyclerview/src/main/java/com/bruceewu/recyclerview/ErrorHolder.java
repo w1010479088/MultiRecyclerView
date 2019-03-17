@@ -4,9 +4,9 @@ package com.bruceewu.recyclerview;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-public class ErrorHolder extends BaseHolder<IDisplayItem> {
+class ErrorHolder extends BaseHolder<IDisplayItem> {
 
-    public ErrorHolder(@NonNull View itemView) {
+    ErrorHolder(@NonNull View itemView) {
         super(itemView);
     }
 

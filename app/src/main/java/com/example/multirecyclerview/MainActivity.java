@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             data.add(new BaseData(HolderMap.Types.TEXT, "大俊子" + i, null, null));
             data.add(new BaseData(HolderMap.Types.IMAGE, "大俊子" + i, null, null));
             data.add(new BaseData(HolderMap.Types.IMAGE9, "大俊子" + i, null, null));
+            data.add(new BaseData(HolderMap.Types.IMAGE10, "大俊子" + i, null, null));
         }
         return data;
     }

@@ -38,7 +38,7 @@ public class Pic10View extends ViewGroup {
         density = dm.density;
         screenWidth = dm.widthPixels;
         divider = dp2px(10);
-        itemHeight = (int) (screenWidth * 0.5625 + 0.5F);
+        itemHeight = (int) (screenWidth * (9.0F / 16.0F) + 0.5F);
         itemWidth = (screenWidth - divider) / 2;
     }
 
@@ -66,8 +66,8 @@ public class Pic10View extends ViewGroup {
         //parent
         int height;
         if (count > NORMAL_COUNT) {
-            int moreRow = (count - 5) / 2 + 1;
-            height = (NORMAL_COUNT + moreRow) * itemHeight + (3 + moreRow - 1) * divider;
+            int moreRow = (count - (NORMAL_COUNT + 1)) / 2 + 1;
+            height = (NORMAL_COUNT + moreRow) * itemHeight + (NORMAL_COUNT + moreRow - 1) * divider;
         } else {
             height = count * itemHeight + (count - 1) * divider;
         }

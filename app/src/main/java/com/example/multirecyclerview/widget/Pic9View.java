@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.example.multirecyclerview.R;
 
 public class Pic9View extends ViewGroup {
+    private static final int MAX_COUNT = 9;
     private float density;
     private int divider;
     private int width;
@@ -39,7 +40,7 @@ public class Pic9View extends ViewGroup {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < MAX_COUNT; i++) {
             ImageView view = new ImageView(getContext());
             view.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher_background));
             addView(view);

@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
+
     defaultConfig {
         applicationId "com.example.multirecyclerview"
         minSdkVersion 23
@@ -10,10 +11,55 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        release {
+            storeFile file("key_store")
+            storePassword "55668899"
+            keyAlias "bruceewu"
+            keyPassword "55668899"
+        }
+    }
+
     buildTypes {
+
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        tencent {
+            dimension "default"
+            buildConfigField "boolean", "DEBUG_MODE", "false"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "tencent", APP_NAME: "tencent"]
+        }
+        alibaba {
+            dimension "default"
+            buildConfigField "boolean", "DEBUG_MODE", "true"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "alibaba", APP_NAME: "alibaba"]
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            variant.getPackageApplication().outputDirectory = new File("${project.rootDir.absolutePath}/apk/")
+
+            if (variant.buildType.name == "release") {
+                outputFileName = "小测试_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+            } else {
+                outputFileName = "小测试_v${defaultConfig.versionName}_debug.apk"
+            }
         }
     }
 }
